@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Flex</string>
+    <string name="notification">Notification</string>
+    <string name="account">Account</string>
+    <string name="search">Search</string>
+    <string name="home">Home</string>
+    <string name="explore">Explore</string>
+    <string name="local_video">Local_Video</string>
+    <string name="local_music">Local Music</string>
+    <string name="local_videoo">Local Video</string>
+    <string name="history">History</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="fragment">Fragment</string>
+    <string name="home_fragment">Home Fragment</string>
+    <string name="video_fragment">Video Fragment</string>
+    <string name="music_fragment">Music Fragment</string>
+    <string name="history_fragment">History Fragment</string>
+    <string name="explore_fragment">Explore Fragment</string>
+    <string name="music_fragmentt">Music Fragment</string>
+
+</resources>

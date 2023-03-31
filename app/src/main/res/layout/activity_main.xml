@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/appBar">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/toolbar"
+            android:background="@color/white"
+            app:menu="@menu/toolbar_menu">
+
+
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/flex"/>
+        </androidx.appcompat.widget.Toolbar>
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/bottom_navigation"
+        android:id="@+id/frame_layout"/>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:menu="@menu/bottom_menu"
+        android:layout_alignParentBottom="true"
+        app:itemTextColor="@color/black"
+        app:itemIconTint="@color/black"
+        app:itemRippleColor="@color/cardview_dark_background"
+        android:id="@+id/bottom_navigation"
+        app:labelVisibilityMode="labeled"/>
+
+</RelativeLayout>
