@@ -17,7 +17,7 @@
 
     <item
         android:id="@+id/local_Video"
-        android:title="@string/local_videoo"
+        android:title="@string/local_video"
         android:icon="@drawable/baseline_video_library_24"
         app:showAsAction="ifRoom"/>
 

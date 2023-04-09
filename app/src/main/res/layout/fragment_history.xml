@@ -1,16 +1,149 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.HomeFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.HomeFragment"
+    android:fillViewport="true"
+    android:fitsSystemWindows="true"
+    android:scrollbars="none">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/history_fragment"
-        android:gravity="center"
-        android:textSize="25sp"/>
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            tools:ignore="UselessParent">
+            <TextView
+                android:id="@+id/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/recent"
+                android:textSize="19sp"
+                android:textColor="@color/black"
+                android:padding="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"/>
 
-</FrameLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_marginTop="5dp"
+                android:background="#AA76EA"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorDivider"
+                android:layout_marginTop="15dp"
+                android:id="@+id/view"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/header2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/header"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_marginTop="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/history"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:padding="5dp"
+                android:drawablePadding="10dp"
+                app:drawableStartCompat="@drawable/baseline_history_24"/>
+
+            <TextView
+                android:layout_marginTop="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/your_video"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:padding="5dp"
+                android:drawablePadding="10dp"
+                app:drawableStartCompat="@drawable/videocam_24"/>
+
+            <TextView
+                android:layout_marginTop="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/watch_later"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:padding="5dp"
+                android:drawablePadding="10dp"
+                app:drawableStartCompat="@drawable/watch_later_24"/>
+
+            <TextView
+                android:layout_marginTop="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/like_videos"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:padding="5dp"
+                android:drawablePadding="10dp"
+                app:drawableStartCompat="@drawable/baseline_favorite_24"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorDivider"
+                android:layout_marginTop="15dp"
+                android:id="@+id/View"/>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/center"
+            android:layout_below="@id/header2">
+
+            <TextView
+                android:id="@+id/text2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/playlist"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:padding="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"/>
+
+
+            <TextView
+                android:id="@+id/text3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/new_playlist"
+                android:textSize="16sp"
+                android:textColor="#5443ED"
+                android:padding="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_alignParentEnd="true"
+                tools:ignore="RelativeOverlap" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text2"
+                android:padding="5dp"
+                android:layout_marginStart="5dp"
+                android:id="@+id/playlist_recylerView"/>
+        </RelativeLayout>
+    </RelativeLayout>
+    <!-- TODO: Update blank fragment layout -->
+
+
+</ScrollView>

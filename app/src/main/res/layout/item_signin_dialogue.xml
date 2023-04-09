@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:padding="10dp"
+        android:background="@drawable/button_bg"
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/you_need_to_sign_in"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:id="@+id/text"
+            android:fontFamily="sans-serif-condensed"/>
+
+        <TextView
+            android:id="@+id/txt_google_signin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/continue_with_google"
+            android:textSize="18sp"
+            android:layout_gravity="center"
+            android:layout_marginTop="15sp"
+            android:background="@drawable/button_bg"
+            android:backgroundTint="@color/white"
+            android:minWidth="233dp"
+            android:padding="5dp"
+            android:gravity="center"
+            app:drawableStartCompat="@drawable/google"
+            android:textColor="@color/black"
+            android:includeFontPadding="false"
+            android:fontFamily="sans-serif-condensed"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>
