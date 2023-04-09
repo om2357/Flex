@@ -29,7 +29,7 @@
     <string name="you_need_to_sign_in">You Need To Sign in</string>
     <string name="continue_with_google">Continue With Google</string>
     <string name="main_logo">Main Logo</string>
-    <string name="default_web_client_id" />
+<!--    <string name="default_web_client_id" />-->
     <string name="email">Email</string>
     <string name="help">Help</string>
     <string name="local_video">Local Video</string>

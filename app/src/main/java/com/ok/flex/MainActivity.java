@@ -11,7 +11,6 @@ import androidx.fragment.app.FragmentTransaction;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.TestLooperManager;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -30,6 +29,7 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -44,7 +44,7 @@ import com.ok.flex.fragment.MusicFragment;
 import com.ok.flex.fragment.VideoFragment;
 
 import java.util.HashMap;
-import java.util.Locale;
+
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
@@ -81,7 +81,10 @@ public class MainActivity extends AppCompatActivity {
                 .requestEmail()
                 .build();
         mGoogleSignInClient = GoogleSignIn.getClient(MainActivity.this, gsc);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+
+            bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+
             @SuppressLint("NonConstantResourceId")
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -147,12 +150,7 @@ public class MainActivity extends AppCompatActivity {
         builder.setView(view);
 
         TextView txt_google_signIn = view.findViewById(R.id.txt_google_signin);
-        txt_google_signIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                signIn();
-            }
-        });
+        txt_google_signIn.setOnClickListener(view1 -> signIn());
         builder.create().show();
     }
 
@@ -174,30 +172,27 @@ public class MainActivity extends AppCompatActivity {
                 GoogleSignInAccount account = task.getResult(ApiException.class);
 
                 AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(),null);
-                auth.signInWithCredential(credential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful())
-                        {
-                            FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-                            HashMap<String, Object> map = new HashMap<>();
-                            map.put("username", account.getDisplayName());
-                            map.put("email", account.getEmail());
-                            map.put("profile", String.valueOf(account.getPhotoUrl()));
-                            assert firebaseUser != null;
-                            map.put("uid", firebaseUser.getUid());
-                            map.put("search", Objects.requireNonNull(account.getDisplayName()).toLowerCase());
+                auth.signInWithCredential(credential).addOnCompleteListener(task1 -> {
+                    if(task1.isSuccessful())
+                    {
+                        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+                        HashMap<String, Object> map = new HashMap<>();
+                        map.put("username", account.getDisplayName());
+                        map.put("email", account.getEmail());
+                        map.put("profile", String.valueOf(account.getPhotoUrl()));
+                        assert firebaseUser != null;
+                        map.put("uid", firebaseUser.getUid());
+                        map.put("search", Objects.requireNonNull(account.getDisplayName()).toLowerCase());
 
 
-                            DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("User");
-                            reference.child(firebaseUser.getUid()).setValue(map);
-                        }
-                        else
-                        {
-                            Toast.makeText(MainActivity.this, Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-
+                        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("User");
+                        reference.child(firebaseUser.getUid()).setValue(map);
                     }
+                    else
+                    {
+                        Toast.makeText(MainActivity.this, Objects.requireNonNull(task1.getException()).getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+
                 });
             }catch (Exception e)
             {
